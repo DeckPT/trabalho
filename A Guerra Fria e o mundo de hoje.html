@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Guerra Fria e o mundo de hoje</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+:root{
+  --bg:#EDF0F3; --surface:#FFFFFF; --ink:#16213A; --muted:#55607A;
+  --red:#B8132B; --blue:#2450B8; --amber:#B77800; --line:#CBD2DD;
+  --hero:#16213A; --hero-ink:#EDF0F3;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1424; --surface:#172038; --ink:#E8ECF4; --muted:#9AA6C0;
+    --red:#FF6B7F; --blue:#7FA2FF; --amber:#F2B93B; --line:#2B3654;
+    --hero:#0A0F1D; --hero-ink:#E8ECF4;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1424; --surface:#172038; --ink:#E8ECF4; --muted:#9AA6C0;
+  --red:#FF6B7F; --blue:#7FA2FF; --amber:#F2B93B; --line:#2B3654;
+  --hero:#0A0F1D; --hero-ink:#E8ECF4;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Source Serif 4",Georgia,serif;font-size:1.08rem;line-height:1.7}
+h1,h2,h3{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;line-height:1.1;margin:0}
+p{margin:0 0 1em;max-width:68ch}
+.wrap{max-width:960px;margin:0 auto;padding:0 1.25rem}
+
+.brand{background:#fff;border-bottom:1px solid #CBD2DD;padding:.7rem 0}
+.brand img{display:block;height:48px;width:auto;max-width:100%}
+/* hero */
+.hero{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden;padding:5rem 0 4.5rem}
+.hero .wrap{position:relative;z-index:1}
+.years{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(3.4rem,13vw,8rem);letter-spacing:-.03em;line-height:.95}
+.years span:first-child{color:#FF6B7F}.years span:last-child{color:#7FA2FF}
+.years i{font-style:normal;opacity:.5;margin:0 .1em}
+.hero h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:500;margin-top:1.4rem;max-width:30ch}
+.hero p{opacity:.8;margin-top:1rem}
+.orbit{position:absolute;right:-60px;top:-60px;width:340px;height:340px;border:1.5px dashed rgba(237,240,243,.25);border-radius:50%;z-index:0;animation:spin 30s linear infinite}
+.orbit::after{content:"";position:absolute;top:-7px;left:50%;width:14px;height:14px;border-radius:50%;background:var(--amber);box-shadow:0 0 18px var(--amber)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.orbit{animation:none}}
+
+/* abas */
+.tabs{background:var(--surface);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:.4rem}
+.tabs a{font-family:"Bricolage Grotesque",sans-serif;font-weight:500;font-size:1.05rem;color:var(--muted);text-decoration:none;padding:1rem 1.1rem;border-bottom:4px solid transparent}
+.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--red)}
+.tabs a:focus-visible{outline:3px solid var(--blue);outline-offset:-3px}
+.tbl{overflow-x:auto;margin-top:1.2rem;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+.tbl table{border-collapse:collapse;width:100%;min-width:560px;font-size:.98rem;line-height:1.5}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:.7rem .9rem;border-bottom:1px solid var(--line)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl th{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1rem}
+.tbl th.us{color:var(--blue)}.tbl th.su{color:var(--red)}
+.tbl td:first-child{font-weight:600;white-space:nowrap}
+.tbl td.y{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;color:var(--amber)}
+.sum{margin:1.2rem 0 0;padding-left:1.3rem;max-width:68ch}
+.sum li{margin-bottom:.6rem}
+[hidden]{display:none !important}
+
+/* sections */
+section{padding:3.5rem 0 0}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:1rem}
+.lead{color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem;margin-top:1.5rem}
+.card{border-top:2px solid var(--ink);padding:.8rem 0 0}
+.card h3{font-size:1.15rem;margin-bottom:.4rem}
+.card p{font-size:.98rem;margin:0;color:var(--muted)}
+
+/* timeline */
+.tl{list-style:none;margin:1.5rem 0 0;padding:0 0 0 1.6rem;border-left:3px solid var(--line)}
+.tl li{position:relative;padding:0 0 1.6rem}
+.tl li::before{content:"";position:absolute;left:calc(-1.6rem - 8px);top:.55rem;width:13px;height:13px;border-radius:50%;background:var(--bg);border:3px solid var(--amber)}
+.tl .y{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:1.6rem;color:var(--amber)}
+.tl b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:500;font-size:1.15rem}
+.tl span{color:var(--muted);font-size:.98rem}
+
+/* espionagem */
+.spy{background:var(--hero);color:var(--hero-ink);margin-top:3.5rem;padding:3.5rem 0}
+.spy h2{margin-bottom:1rem}
+.spy .card{border-top-color:rgba(237,240,243,.5)}
+.spy .card p{color:rgba(237,240,243,.75)}
+.spy .lead{color:rgba(237,240,243,.7)}
+
+/* hoje */
+.now{display:grid;gap:0;margin-top:1.5rem;border-top:1px solid var(--line)}
+.now div{display:grid;grid-template-columns:minmax(0,13rem) 1fr;gap:1.5rem;padding:1.1rem 0;border-bottom:1px solid var(--line)}
+.now h3{font-size:1.1rem}
+.now p{margin:0;color:var(--muted);font-size:1rem}
+@media (max-width:620px){.now div{grid-template-columns:1fr;gap:.3rem}.orbit{width:220px;height:220px}}
+
+blockquote{margin:3.5rem 0 0;padding:1.4rem 0 0;border-top:2px solid var(--ink);font-size:1.15rem;font-style:italic;max-width:68ch}
+footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem}
+</style>
+</head>
+<body>
+
+<div class="brand"><div class="wrap"><img src="data:image/png;base64,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" alt="ATEC" width="170" height="48"></div></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="years"><span>1947</span><i>–</i><span>1991</span></div>
+    <h1>A Guerra Fria e o mundo em que vivemos hoje</h1>
+    <p>Durante mais de quarenta anos, os EUA e a URSS competiram em tudo, menos numa guerra directa. Dessa competição saíram o espaço, a Internet e grande parte do mundo que conhecemos.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Separadores"><div class="wrap">
+  <a href="#leitura" id="t-leitura">Texto completo</a>
+  <a href="#resumo" id="t-resumo">Resumo organizado</a>
+</div></nav>
+
+<div id="tab-leitura">
+<main class="wrap">
+
+<section>
+  <h2>Contexto</h2>
+  <p>A Guerra Fria opôs os Estados Unidos e a União Soviética numa disputa ideológica, política, económica e militar, sem guerra aberta entre as duas superpotências. A queda do Muro de Berlim (1989), a reunificação alemã (1990) e a dissolução da URSS (1991) puseram fim à ordem bipolar e abriram caminho à “nova ordem mundial”: hegemonia norte-americana, globalização e economia de mercado.</p>
+  <div class="cols">
+    <div class="card r"><h3>1989</h3><p>Cai o Muro de Berlim.</p></div>
+    <div class="card b"><h3>1990</h3><p>A Alemanha reunifica-se.</p></div>
+    <div class="card a"><h3>1991</h3><p>A URSS dissolve-se.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>A corrida científica e tecnológica</h2>
+  <p class="lead">A competição entre os blocos foi um enorme motor de investigação. O investimento em ciência, educação e indústria militar deixou avanços que ainda moldam o quotidiano.</p>
+  <div class="cols">
+    <div class="card b"><h3>Informática e Internet</h3><p>A ARPANET, criada pelos EUA nos anos 60 por razões de defesa, está na origem da Internet.</p></div>
+    <div class="card r"><h3>Telecomunicações</h3><p>Os satélites de comunicação permitiram transmissões intercontinentais em directo.</p></div>
+    <div class="card a"><h3>Navegação</h3><p>O GPS nasceu para fins militares e hoje está em qualquer telemóvel.</p></div>
+    <div class="card b"><h3>Materiais, medicina e energia</h3><p>Muitos avanços saíram da investigação militar e espacial.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>O que se descobriu e inventou</h2>
+  <p class="lead">Para lá das grandes tecnologias, a rivalidade financiou ciência de base. Muitas descobertas surgiram como “efeito secundário” de projectos militares.</p>
+  <div class="now">
+    <div><h3>Cinturas de Van Allen (1958)</h3><p>O Explorer 1, o primeiro satélite norte-americano, detectou zonas de radiação intensa em redor da Terra. Foi a primeira grande descoberta científica da era espacial e ainda hoje condiciona o desenho de satélites e missões tripuladas.</p></div>
+    <div><h3>O outro lado da Lua (1959)</h3><p>A sonda soviética Luna 3 enviou as primeiras imagens da face oculta da Lua. Em 1970, a Venera 7 foi a primeira sonda a transmitir dados da superfície de outro planeta, Vénus.</p></div>
+    <div><h3>Rochas lunares</h3><p>As missões Apollo trouxeram cerca de 380 kg de amostras. Permitiram datar a Lua e sustentam a teoria de que se formou de um grande impacto com a Terra.</p></div>
+    <div><h3>Tectónica de placas</h3><p>Os mapas do fundo do mar, feitos com sonar e magnetómetros para detectar submarinos, revelaram faixas magnéticas simétricas junto às dorsais oceânicas. Foi uma prova decisiva de que os fundos oceânicos se expandem.</p></div>
+    <div><h3>Sismologia moderna</h3><p>Para detectar testes nucleares secretos, instalou-se nos anos 60 uma rede mundial de sismógrafos. Os dados melhoraram muito o estudo do interior da Terra e dos sismos.</p></div>
+    <div><h3>Circuitos integrados (1958-59)</h3><p>Inventados por Jack Kilby e Robert Noyce, foram impulsionados pelas encomendas militares e pelo computador de orientação da Apollo. Deram origem aos microprocessadores e à electrónica actual.</p></div>
+    <div><h3>Comutação de pacotes e ARPANET</h3><p>A ARPA foi criada em 1958, depois do Sputnik. Em 1969, a ARPANET ligou as primeiras universidades. A adopção do protocolo TCP/IP em 1983 consolidou a base técnica da Internet.</p></div>
+    <div><h3>GPS</h3><p>Nasceu de sistemas de navegação para submarinos e mísseis. O primeiro satélite NAVSTAR foi lançado em 1978 e o sistema ficou completo em 1995. Funciona com relógios atómicos e correcções da relatividade de Einstein.</p></div>
+    <div><h3>Satélites do quotidiano</h3><p>O TIROS-1 (1960) foi o primeiro satélite meteorológico. O Telstar (1962) transmitiu televisão em directo entre a América e a Europa. O Landsat (1972) iniciou a observação civil da Terra.</p></div>
+    <div><h3>Energia nuclear e fusão</h3><p>A primeira central eléctrica nuclear do mundo abriu em Obninsk, na URSS, em 1954. Também foi na URSS que se inventou o tokamak, o desenho de reactor de fusão ainda hoje mais usado.</p></div>
+    <div><h3>Saúde: cooperação inesperada</h3><p>Nos anos 50 e 60, a vacina oral contra a poliomielite de Albert Sabin foi testada em grande escala na URSS. Em 1958, os soviéticos propuseram à OMS o programa que erradicou a varíola, declarada eliminada em 1980.</p></div>
+  </div>
+  <p style="margin-top:1.5rem">A ciência também ajudou a travar o conflito. Os acordos assinados com base nestas capacidades de observação incluem o Tratado da Antárctida (1959), o Tratado de Proibição Parcial de Testes Nucleares (1963) e o Tratado do Espaço Exterior (1967), que proíbe armas nucleares em órbita.</p>
+</section>
+
+<section>
+  <h2>A conquista do espaço</h2>
+  <p class="lead">Mais do que ciência, foi uma demonstração de poder e de superioridade tecnológica.</p>
+  <ol class="tl">
+    <li><span class="y">1957</span><b>Sputnik 1</b><span>A URSS lança o primeiro satélite artificial.</span></li>
+    <li><span class="y">1961</span><b>Yuri Gagarin</b><span>O primeiro homem no espaço.</span></li>
+    <li><span class="y">1969</span><b>Apollo 11</b><span>O ser humano chega à Lua.</span></li>
+  </ol>
+  <p>O legado inclui a Estação Espacial Internacional (fruto da cooperação entre antigos rivais), a exploração científica do sistema solar e uma indústria espacial que já inclui empresas privadas. O espaço tornou-se um domínio estratégico, económico e científico.</p>
+</section>
+
+</main>
+
+<div class="spy">
+  <div class="wrap">
+    <h2>A espionagem por satélite</h2>
+    <p class="lead">Os satélites militares transformaram a recolha de informação. Programas como o Corona (EUA) fotografavam território inimigo a partir da órbita e substituíram os arriscados aviões espiões, como o U-2 abatido em 1960.</p>
+    <div class="cols">
+      <div class="card a"><h3>Verificação de tratados</h3><p>Permitiram monitorizar acordos de limitação de armas nucleares (SALT, START) e deram estabilidade.</p></div>
+      <div class="card r"><h3>Dissuasão</h3><p>Saber que o adversário era observado reduzia o risco de ataques de surpresa.</p></div>
+      <div class="card b"><h3>Legado actual</h3><p>Meteorologia, cartografia, agricultura, clima, catástrofes e, claro, operações militares e de segurança.</p></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+<section>
+  <h2>Porque importa hoje</h2>
+  <div class="now">
+    <div><h3>Ordem geopolítica</h3><p>A NATO e o alargamento da União Europeia a Leste reflectem o fim da Guerra Fria. A reunificação alemã e a integração do antigo bloco de Leste redesenharam a Europa.</p></div>
+    <div><h3>Globalização económica</h3><p>Com o colapso do modelo soviético, a economia de mercado expandiu-se e as cadeias de produção tornaram-se globais.</p></div>
+    <div><h3>Tecnologia do quotidiano</h3><p>Internet, GPS e comunicações por satélite têm raízes directas neste período.</p></div>
+    <div><h3>Novas rivalidades</h3><p>A competição tecnológica e espacial continua, com China, Índia e empresas privadas. Fala-se de uma “nova Guerra Fria” entre EUA e China, e há tensões com a Rússia.</p></div>
+    <div><h3>Segurança e vigilância</h3><p>A vigilância global e a cibersegurança continuam a lógica da espionagem da época e levantam debates sobre privacidade e soberania.</p></div>
+  </div>
+
+  <blockquote>A Guerra Fria deixou muito mais do que medo e muros. Deixou os satélites, a Internet e uma Europa redesenhada, e boa parte do mundo actual começou ali.</blockquote>
+</section>
+</main>
+</div>
+
+<div id="tab-resumo" hidden>
+<main class="wrap">
+
+<section>
+  <h2>Cronologia</h2>
+  <div class="tbl"><table>
+    <tr><th>Ano</th><th>Acontecimento</th></tr>
+    <tr><td class="y">1947</td><td>Doutrina Truman: os EUA comprometem-se a apoiar países ameaçados pelo comunismo.</td></tr>
+    <tr><td class="y">1949</td><td>Criação da NATO.</td></tr>
+    <tr><td class="y">1955</td><td>Criação do Pacto de Varsóvia, a aliança militar soviética.</td></tr>
+    <tr><td class="y">1957</td><td>Sputnik 1, o primeiro satélite artificial.</td></tr>
+    <tr><td class="y">1958</td><td>Criação da ARPA e da NASA; Explorer 1 descobre as cinturas de Van Allen.</td></tr>
+    <tr><td class="y">1961</td><td>Gagarin vai ao espaço; construção do Muro de Berlim.</td></tr>
+    <tr><td class="y">1962</td><td>Crise dos mísseis de Cuba, o momento de maior risco de guerra nuclear.</td></tr>
+    <tr><td class="y">1969</td><td>Apollo 11 na Lua; primeira ligação da ARPANET.</td></tr>
+    <tr><td class="y">1975</td><td>Missão Apollo-Soyuz: naves norte-americana e soviética acoplam em órbita.</td></tr>
+    <tr><td class="y">1989</td><td>Queda do Muro de Berlim.</td></tr>
+    <tr><td class="y">1990</td><td>Reunificação da Alemanha.</td></tr>
+    <tr><td class="y">1991</td><td>Dissolução da URSS.</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>EUA e URSS lado a lado</h2>
+  <div class="tbl"><table>
+    <tr><th></th><th class="us">Estados Unidos</th><th class="su">União Soviética</th></tr>
+    <tr><td>Aliança militar</td><td>NATO</td><td>Pacto de Varsóvia</td></tr>
+    <tr><td>Sistema</td><td>Democracia liberal e economia de mercado</td><td>Partido único e economia planificada</td></tr>
+    <tr><td>Espaço</td><td>Apollo 11 (Lua, 1969)</td><td>Sputnik (1957) e Gagarin (1961)</td></tr>
+    <tr><td>Satélites espiões</td><td>Corona</td><td>Zenit</td></tr>
+    <tr><td>Navegação por satélite</td><td>GPS</td><td>GLONASS</td></tr>
+    <tr><td>Energia nuclear civil</td><td>Shippingport (1957)</td><td>Obninsk (1954)</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>Descobertas e invenções por área</h2>
+  <div class="tbl"><table>
+    <tr><th>Área</th><th>O que surgiu</th><th>Onde se vê hoje</th></tr>
+    <tr><td>Espaço</td><td>Cinturas de Van Allen, face oculta da Lua, sondas em Vénus</td><td>Protecção de satélites e astronautas</td></tr>
+    <tr><td>Terra</td><td>Tectónica de placas, rede mundial de sismógrafos</td><td>Estudo de sismos e do fundo do mar</td></tr>
+    <tr><td>Electrónica</td><td>Circuitos integrados</td><td>Telemóveis e computadores</td></tr>
+    <tr><td>Comunicações</td><td>ARPANET, TCP/IP, Telstar</td><td>Internet e televisão por satélite</td></tr>
+    <tr><td>Navegação</td><td>GPS e GLONASS</td><td>Mapas, transportes, agricultura</td></tr>
+    <tr><td>Observação</td><td>TIROS, Landsat, Corona</td><td>Meteorologia, clima, cartografia</td></tr>
+    <tr><td>Energia</td><td>Centrais nucleares, tokamak</td><td>Electricidade nuclear e investigação em fusão</td></tr>
+    <tr><td>Saúde</td><td>Vacina oral da pólio, erradicação da varíola</td><td>Programas globais de vacinação</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>Conceitos-chave</h2>
+  <div class="tbl"><table>
+    <tr><td>Bipolaridade</td><td>Mundo dividido em dois blocos liderados pelos EUA e pela URSS.</td></tr>
+    <tr><td>Dissuasão</td><td>Evitar um ataque pelo medo de uma resposta devastadora.</td></tr>
+    <tr><td>Corrida aos armamentos</td><td>Competição para acumular mais e melhores armas.</td></tr>
+    <tr><td>Détente</td><td>Período de distensão nos anos 70, com acordos como o SALT.</td></tr>
+    <tr><td>Nova ordem mundial</td><td>Mundo pós-1991, com hegemonia norte-americana e globalização.</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2>Resumo em cinco ideias</h2>
+  <ol class="sum">
+    <li>A Guerra Fria foi uma rivalidade de 1947 a 1991 sem guerra directa entre as superpotências.</li>
+    <li>O espaço foi a montra do poder: Sputnik, Gagarin e Apollo 11.</li>
+    <li>Os satélites espiões vigiaram o adversário e permitiram verificar tratados.</li>
+    <li>Internet, GPS e electrónica moderna nasceram deste período.</li>
+    <li>As rivalidades tecnológicas e a vigilância global continuam hoje.</li>
+  </ol>
+</section>
+
+</main>
+</div>
+
+<footer><div class="wrap">Trabalho sobre a Guerra Fria, a conquista do espaço e a espionagem por satélite.</div></footer>
+
+<script>
+(function(){
+  var tabs={leitura:document.getElementById('tab-leitura'),resumo:document.getElementById('tab-resumo')};
+  var links={leitura:document.getElementById('t-leitura'),resumo:document.getElementById('t-resumo')};
+  function show(){
+    var h=(location.hash||'').replace('#','');
+    var k=h==='resumo'?'resumo':'leitura';
+    for(var n in tabs){
+      tabs[n].hidden=(n!==k);
+      if(n===k){links[n].setAttribute('aria-current','page');}else{links[n].removeAttribute('aria-current');}
+    }
+  }
+  window.addEventListener('hashchange',function(){show();window.scrollTo(0,0);});
+  show();
+})();
+</script>
+</body>
+</html>
